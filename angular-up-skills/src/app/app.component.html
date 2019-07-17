@@ -1,0 +1,87 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+
+  <div>
+    <label>First Name :</label>
+    <input type="text"> <br/><br/>
+    <label>Last Name :</label> 
+    <input type="text"> <br/><br/>
+    <label>Email :</label>
+    <input type="text">
+  </div>
+<div>
+  
+</div>
+
+<br/>
+<button (click) = "submit()">Click Me</button>
+
+<h2>This is the Routing tutorials</h2>
+
+<div>
+  <nav>
+    <a routerLink="home">Home</a>
+    <a routerLink="personal">Personal</a>
+  </nav>
+</div>
+<router-outlet></router-outlet>
+
+<h3>This is the tutorials</h3>
+
+<div> Months :
+  <select>
+    <option *ngFor= "let i of months">
+      {{i}}
+    </option>
+  </select>
+
+</div>
+
+<br/>
+<div>
+  <span *ngIf= "isavailable">condition is valid</span>
+</div>
+
+<app-personal></app-personal>
+
+<div class="container">
+  <h1>Welcome to {{ title }}</h1>
+  <form [formGroup]="angForm" novalidate>
+
+    <div class="form-group">
+      <label>Name :</label>
+      <input class="form-control" formControlName="name" type="text">
+    </div>
+    <div *ngIf="angForm.controls['name']. invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+      <div *ngIf="angForm.controls['name'].errors.required">
+        Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Address:</label>
+      <input class="form-control" formControlName="address" type="text">
+
+    </div>
+
+    <div *ngIf="angForm.controls['address'].invalid && (angForm.controls['address'].dirty || angForm.controls['adress'].touched)" class="alert alert-danger">
+      <div *ngIf="angForm.controls['address'].errors.required">
+        email is required.
+
+      </div>
+    </div>
+
+    <button type="submit"
+    [disabled]="angForm.pristine || angForm.invalid" class="btn btn-success">
+  Save
+  </button>
+  </form>
+  <br/>
+  <p>Form value: {{ angForm.value | json }}</p>
+  <p>Form status: {{ angForm.status | json }}</p>
+
+</div>
